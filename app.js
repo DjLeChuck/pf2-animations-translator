@@ -29,8 +29,8 @@ const translations = {};
         fatal(`Le répertoire ${compendiumDirectoryPath} n’existe pas.`);
     }
 
-    if (!compendiumDirectoryPath.match('pf2-fr\/babele\/(vf|vf-vo|vo|vo-vf)\/fr\/?$')) {
-        fatal(`Le répertoire des compendiums traduits doit être "pf2-fr/babele/xxx/fr/" (avec "xxx" valant "vf", ou "vf-vo", ou "vo", ou "vo-vf")`);
+    if (!compendiumDirectoryPath.match('pf2-fr\/babele\/vf\/fr\/?$')) {
+        fatal(`Le répertoire des compendiums traduits doit être "pf2-fr/babele/vf/fr/".`);
     }
 
     console.log('Chargement des compendiums...');
