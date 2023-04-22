@@ -10,7 +10,8 @@ Versions des modules utilisées pour la génération :
 
 ## Installation
 
-1. Télécharger la dernière version du fichier.
+1. Télécharger le fichier `translated-menu.json` de
+   la [dernière version](https://github.com/DjLeChuck/pf2-animations-translator/releases/latest).
 2. Ouvrir le `Menu de lancement` de `Automated Animations`
     * Accessible via le `Configuration des options > Automated Animations > Menu de lancement` ou la macro `Open AA`
 3. Cliquer sur `Gestionnaire de menu` en bas de la fenêtre
