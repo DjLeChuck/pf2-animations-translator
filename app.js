@@ -6,6 +6,7 @@ const parsedCompendiums = [
     'pf2e.spells-srd.json',
     'pf2e.conditionitems.json',
     'pf2e.spell-effects.json',
+    'pf2e.actionspf2e.json',
 ];
 const translations = {};
 
@@ -34,6 +35,7 @@ const translations = {};
 
     console.log('Chargement des compendiums...');
     await loadCompendiums(compendiumDirectoryPath);
+    await loadManualTranslations('./manual-translations.json');
 
     console.log('');
     console.log('==========================================');
@@ -84,7 +86,9 @@ const translations = {};
 
             warn('Liste des traductions manquantes :');
 
-            missingTranslations.forEach(name => warn(name));
+            warn("{");
+            missingTranslations.forEach(name => warn(`"${name}": "",`));
+            warn("}");
         }
     } catch (err) {
         fatal(err);
@@ -130,7 +134,34 @@ async function loadCompendiums(directory) {
             const dataset = await loadJSONFile(filePath);
 
             for (const [key, entry] of Object.entries(dataset.entries)) {
-                const transKey = entry.id ?? key;
+                let transKey = entry.id ?? key;
+
+                // Cas particulier des "intensitées"
+                if (null !== transKey.match(/\((Moderate|Greater|Lesser|True)\)$/)) {
+                    continue;
+                }
+
+                if (null !== transKey.match(/\((Major)\)$/)) {
+                    transKey = transKey.replace(' (Major)', '');
+                    entry.name = entry.name.replace(' majeures', '');
+                    entry.name = entry.name.replace(' majeurs', '');
+                    entry.name = entry.name.replace(' majeure', '');
+                    entry.name = entry.name.replace(' majeur', '');
+                    entry.name = entry.name.replace(' (majeur)', '');
+                }
+
+                if ([
+                    'Pudding sang de dragon',
+                    'Robe de bibliothécaire inférieur',
+                    'Hache tourbillonante',
+                    'Bâton de vengeance de la nature',
+                    'Lunettes d\'alchimistes',
+                    'Boulette d\'ignition',
+                    'Flute du devin',
+                    'Fléau ouroboros',
+                ].includes(entry.name)) {
+                    continue;
+                }
 
                 if ((translations[transKey] ?? null) && translations[transKey] !== entry.name) {
                     warn(`Traduction pour ${transKey} déjà présente. En place : ${translations[transKey]} ; Nouveau : ${entry.name}`);
@@ -140,7 +171,23 @@ async function loadCompendiums(directory) {
             }
         }
     } catch (e) {
-        console.error(e);
+        fatal(e);
+    }
+}
+
+async function loadManualTranslations(filePath) {
+    try {
+        const dataset = await loadJSONFile(filePath);
+
+        for (const [key, translation] of Object.entries(dataset)) {
+            if ('' === translation) {
+                continue;
+            }
+
+            translations[key] = translation;
+        }
+    } catch (err) {
+        fatal(e);
     }
 }
 
