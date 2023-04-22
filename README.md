@@ -1,17 +1,35 @@
 # pf2-animations-translator
 
-Translate PF2 Animations menu labels.
+Traduction FR des animations du module [PF2e Animations](https://foundryvtt.com/packages/pf2e-jb2a-macros).
 
-## Usage
+## Installation
 
-Execute the following command:
+1. Télécharger la dernière version du fichier.
+2. Ouvrir le `Menu de lancement` de `Automated Animations`
+    * Accessible via le `Configuration des options > Automated Animations > Menu de lancement` ou la macro `Open AA`
+3. Cliquer sur `Gestionnaire de menu` en bas de la fenêtre
+    * (Optionnel) Cliquer sur `Exporter Menu` si vous voulez garder une sauvegarde de la configuration actuelle
+4. Cliquer sur `Écraser Menu`, puis sur `Oui` dans la fenêtre de confirmation. Choisissez ensuite le fichier téléchargé
+   à la première étape et validez.
+5. Profitez !
+
+## Traductions manquantes
+
+L’ensemble des termes non traduits se trouvent dans le fichier [untranslated.json](./untranslated.json). Ils sont donc
+restés intouchés dans le fichier et se retrouvent toujours sous leur forme VO.
+
+## Génération du fichier de traductions
+
+⚠️ Toute cette partie **N’EST PAS** nécessaire. Il s’agit de la procédure de génération du fichier à télécharger.
+
+Exécuter la commande suivante :
 
 ```bash
 node app.js /path/to/fvtt-AutomatedAnimations-GlobalMenu-pf2e.json /path/to/FoundryVTT/Data/modules/pf2-fr/babele/vf/fr
 ```
 
-The first argument is the JSON of the global menu which can ben exported through the options.
-The second argument is the path to translations files. It can be any of available ones (`vf`, `vf-vo`, `vo`, `vo-vf`).
+Le premier argument est le fichier JSON exporté depuis `Automated Animations` accessible via `Exporter Menu` comme
+expliqué dans la procédure d’installation.
+Le second argument est le chemin vers le répertoire `modules/pf2-fr/babele/vf/fr` à utiliser.
 
-After the execution, a file `translated-menu.json` will be created. This file needs to be imported and **it replace**
-the current menu.
+Après l’exécution, un fichier `translated-menu.json` sera créé, prêt à être importé.
