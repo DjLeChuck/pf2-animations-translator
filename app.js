@@ -14,7 +14,7 @@ const translations = {};
     const [menuFilePath, compendiumDirectoryPath] = process.argv.slice(2);
 
     if (!menuFilePath) {
-        fatal('Le premier argument est manquant.');
+        fatal('Le premier argument (chemin vers le fichier de menu) est manquant.');
     }
 
     if (!await exists(menuFilePath)) {
@@ -22,7 +22,7 @@ const translations = {};
     }
 
     if (!compendiumDirectoryPath) {
-        fatal('Le second argument est manquant.');
+        fatal('Le second argument (répertoire du module de traduction "pf2-fr") est manquant.');
     }
 
     if (!await exists(compendiumDirectoryPath)) {
