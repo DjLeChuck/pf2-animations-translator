@@ -150,19 +150,6 @@ async function loadCompendiums(directory) {
                     entry.name = entry.name.replace(' (majeur)', '');
                 }
 
-                if ([
-                    'Pudding sang de dragon',
-                    'Robe de bibliothécaire inférieur',
-                    'Hache tourbillonante',
-                    'Bâton de vengeance de la nature',
-                    'Lunettes d\'alchimistes',
-                    'Boulette d\'ignition',
-                    'Flute du devin',
-                    'Fléau ouroboros',
-                ].includes(entry.name)) {
-                    continue;
-                }
-
                 if ((translations[transKey] ?? null) && translations[transKey] !== entry.name) {
                     warn(`Traduction pour ${transKey} déjà présente. En place : ${translations[transKey]} ; Nouveau : ${entry.name}`);
                 }
@@ -187,7 +174,7 @@ async function loadManualTranslations(filePath) {
             translations[key] = translation;
         }
     } catch (err) {
-        fatal(e);
+        fatal(err);
     }
 }
 
