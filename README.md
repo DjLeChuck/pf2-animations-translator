@@ -1,13 +1,13 @@
 # pf2-animations-translator
 
-Traduction FR des animations du module [PF2e Animations](https://foundryvtt.com/packages/pf2e-jb2a-macros) grâce à
+Traduction FR des animations du module [PF2e Animation Macros](https://foundryvtt.com/packages/pf2e-jb2a-macros) grâce à
 l’utilisation du module [Français [Pathfinder 2] (fan made)](https://foundryvtt.com/packages/pf2-fr).
 
 Versions des modules utilisées pour la génération :
 
-* `Automated Animations` : `4.2.60`
-* `PF2e Animations` : `2.15.5`
-* `Français [Pathfinder 2] (fan made)` : `5.1.1`
+* `Automated Animations` : `4.2.71`
+* `PF2e Animation Macros` : `2.17.5`
+* `Français [Pathfinder 2] (fan made)` : `5.13.3`
 
 ## Installation
 
